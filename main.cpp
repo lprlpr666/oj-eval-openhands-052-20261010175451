@@ -225,13 +225,10 @@ int main(){
         if (i + 1 < input.size()) {
             char cur = input[i];
             char nxt = input[i+1];
-            bool curIsPart = (isalnum(cur) || cur == ')');
-            bool nxtIsPart = (nxt == 'x' || nxt == 's' || nxt == 'c' || nxt == '(');
-            if (curIsPart && nxtIsPart) {
-                // avoid inserting inside identifiers like "sin" or "cos"
-                bool isSin = (i>=2 && input[i-2]=='s' && input[i-1]=='i' && cur=='n' && nxt=='x');
-            bool isCos = (i>=2 && input[i-2]=='c' && input[i-1]=='o' && cur=='s' && nxt=='x');
-            if (!isSin && !isCos) {
+            // Insert '*' for implicit multiplication
+            if ( (isdigit(cur) || cur=='x' || cur==')') && (nxt=='x' || nxt=='s' || nxt=='c' || nxt=='(') ) {
+                // avoid exponent digit before x (e.g., ^4x)
+                if (!(isdigit(cur) && nxt=='x' && i>=1 && input[i-1]=='^')) {
                     processed.push_back('*');
                 }
             }
