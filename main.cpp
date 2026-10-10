@@ -1,3 +1,4 @@
+// solution for problem 052
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -236,7 +237,7 @@ int main(){
             }
         }
     }
-    cerr << "Processed: " << processed << "\n";
+    // processed output removed for OJ
     s = processed; pos = 0;
     Frac expr = parseExpression();
     string out1 = fracToString(expr);
