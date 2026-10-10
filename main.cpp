@@ -1,4 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cctype>
+#include <string>
+#include <sstream>
 using namespace std;
 
 struct Term {
